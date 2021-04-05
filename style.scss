@@ -1,0 +1,122 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%; // 10px
+  font-family: 'Poppins', sans-serif; // 'Montserrat', 'Roboto';
+}
+
+// body {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   height: 100vh;
+// }
+
+.navigation {
+  width: 100vw;
+  height: 100vh;
+  background-color: #67e6dc;
+  background: linear-gradient(
+    to bottom,
+    #67e6dc 0%,
+    #67e6dc 50%,
+    #17c0eb 50%,
+    #17c0eb 100%
+  );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__content {
+    background-color: #fff;
+    padding: 20px;
+    width: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 3px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: width 0.6s linear;
+
+    &__links {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      list-style-type: none;
+      margin-right: 20px;
+      width: 0%;
+      transition: width 0.6s linear;
+
+      &--link {
+        font-size: 1.6rem;
+        transform: rotate(0deg);
+        opacity: 1;
+        transition: transform 0.6s linear, opacity 0.6s linear;
+        z-index: -1;
+
+        a {
+          text-decoration: none;
+          color: #7158e2;
+          font-weight: bold;
+        }
+
+        a:hover {
+          color: #c56cf0;
+        }
+      }
+    }
+    &__button {
+      width: 22px;
+      height: 22px;
+      cursor: pointer;
+      margin-right: 20px;
+      z-index: 10;
+
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-direction: column;
+
+      &--line {
+        height: 2px;
+        width: 22px;
+        background-color: #7158e2;
+        transition: transform 0.6s linear;
+      }
+      &__button:hover + .navigation__content__button--line {
+        background-color: #c56cf0;
+      }
+    }
+  }
+
+  &__content.active {
+    width: 350px;
+
+    .navigation__content__links {
+      width: 100%;
+    }
+
+    .navigation__content__links--link {
+      transform: rotateY(360deg);
+      opacity: 1;
+      z-index: 0;
+    }
+
+    .navigation__content__button--line.line1 {
+      transform: rotate(-45deg) translateY(8px);
+    }
+
+    .navigation__content__button--line.line2 {
+      transform: rotate(45deg) translateY(-8px);
+    }
+  }
+}
